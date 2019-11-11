@@ -35,23 +35,21 @@ const Bubbles = ({ colors }) => {
               .map(({ x, y, r, key }, i) => {
                 if (i < colors.length) {
                   return (
-                    <>
-                      <Circle
-                        key={key}
-                        cx={x}
-                        cy={y}
-                        r={r}
-                        fill={colors[i].code.hex}
-                      />
-                      <Rect
-                        key={key}
-                        x={x}
-                        y={y}
-                        width={x}
-                        height={y}
-                        fill={colors[i].code.hex}
-                      />
-                    </>
+                    <Circle
+                      key={key}
+                      cx={x}
+                      cy={y}
+                      r={r}
+                      fill={colors[i].code.hex}
+                    />
+                    // <Rect
+                    //   key={key}
+                    //   x={x}
+                    //   y={y}
+                    //   width={x}
+                    //   height={y}
+                    //   fill={colors[i].code.hex}
+                    // />
                   );
                 }
                 return null;

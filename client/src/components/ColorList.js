@@ -41,8 +41,8 @@ const ColorList = ({ colors, updateColors }) => {
     <div className='colors-wrap'>
       <p>colors</p>
       <ul>
-        {colors.map(color => (
-          <li key={color.color} onClick={() => editColor(color)}>
+        {colors.map((color, i) => (
+          <li key={i} onClick={() => editColor(color)}>
             <span>
               <span
                 className='delete'
