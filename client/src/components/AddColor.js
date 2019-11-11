@@ -1,25 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { axiosWithAuth as axios } from '../utils/axios';
+import { useInput } from '../hooks/useInput';
 
 const AddColor = ({ colors, updateColors }) => {
-  const [newColor, setNewColor] = useState({
-    color: '',
-    code: {
-      hex: '#'
-    }
-  });
-
-  const handleChange = e => {
-    setNewColor({
-      ...newColor,
-      [e.target.name]: e.taget.value
-    });
-  };
+  const [color, handleColor] = useInput('');
+  const [hex, handleHex] = useInput('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(newColor);
+    let newColor = {
+      color: color,
+      code: {
+        hex: hex
+      }
+    };
+
     updateColors([...colors, newColor]);
+
     axios()
       .post(`/api/colors`, newColor)
       .then(res => console.log(res))
@@ -34,8 +31,8 @@ const AddColor = ({ colors, updateColors }) => {
           Color Name:
           <input
             name='color'
-            value={newColor.color}
-            onChange={e => handleChange(e)}
+            value={color}
+            onChange={e => handleColor(e.target.value)}
             placeholder='Color Name'
           />
         </label>
@@ -43,8 +40,8 @@ const AddColor = ({ colors, updateColors }) => {
           Hex Code:
           <input
             name='hex'
-            value={newColor.code.hex}
-            onChange={e => handleChange(e)}
+            value={hex}
+            onChange={e => handleHex(e.target.value)}
             placeholder='Hex Code'
           />
         </label>
