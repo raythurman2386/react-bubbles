@@ -1,6 +1,4 @@
 import React from 'react';
-import { axiosWithAuth as axios } from '../utils/axios';
-import { useInput } from '../hooks/useInput';
 import { useForm } from '../hooks/useForm';
 
 const AddColor = ({ colors, updateColors }) => {

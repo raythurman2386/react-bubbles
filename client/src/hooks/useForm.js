@@ -19,9 +19,18 @@ export const useForm = (colors, updateColors) => {
 
     axios()
       .post(`/api/colors`, newColor)
-      .then(res => console.log(res))
+      .then(res => {
+        handleColor('');
+        handleHex('');
+      })
       .catch(err => console.log(err));
   };
 
-  return { color, hex, handleColor, handleHex, handleSubmit };
+  return {
+    color,
+    hex,
+    handleColor,
+    handleHex,
+    handleSubmit
+  };
 };
