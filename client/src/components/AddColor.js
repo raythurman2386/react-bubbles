@@ -1,27 +1,13 @@
 import React from 'react';
 import { axiosWithAuth as axios } from '../utils/axios';
 import { useInput } from '../hooks/useInput';
+import { useForm } from '../hooks/useForm';
 
 const AddColor = ({ colors, updateColors }) => {
-  const [color, handleColor] = useInput('');
-  const [hex, handleHex] = useInput('');
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    let newColor = {
-      color: color,
-      code: {
-        hex: hex
-      }
-    };
-
-    updateColors([...colors, newColor]);
-
-    axios()
-      .post(`/api/colors`, newColor)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  };
+  const { color, hex, handleColor, handleHex, handleSubmit } = useForm(
+    colors,
+    updateColors
+  );
 
   return (
     <>
