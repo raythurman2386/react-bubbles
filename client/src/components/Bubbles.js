@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Pack } from '@potion/layout';
-import { Svg, Rect } from '@potion/element';
+import { Svg, Circle, Rect } from '@potion/element';
 
 const Bubbles = ({ colors }) => {
   const [bubbleData, setBubbleData] = useState([]);
@@ -19,7 +19,7 @@ const Bubbles = ({ colors }) => {
       <p>bubbles</p>
 
       {/* Size of the svg that will be rendered */}
-      <Svg width={600} height={600}>
+      <Svg width={400} height={400}>
         <Pack
           data={{
             children: bubbleData
@@ -35,21 +35,23 @@ const Bubbles = ({ colors }) => {
               .map(({ x, y, r, key }, i) => {
                 if (i < colors.length) {
                   return (
-                    // <Circle
-                    //   key={key}
-                    //   cx={x}
-                    //   cy={y}
-                    //   r={r}
-                    //   fill={colors[i].code.hex}
-                    // />
-                    <Rect
-                      key={key}
-                      x={x}
-                      y={y}
-                      width={x}
-                      height={y}
-                      fill={colors[i].code.hex}
-                    />
+                    <>
+                      <Circle
+                        key={key}
+                        cx={x}
+                        cy={y}
+                        r={r}
+                        fill={colors[i].code.hex}
+                      />
+                      <Rect
+                        key={key}
+                        x={x}
+                        y={y}
+                        width={x}
+                        height={y}
+                        fill={colors[i].code.hex}
+                      />
+                    </>
                   );
                 }
                 return null;
