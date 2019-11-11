@@ -24,7 +24,7 @@ const ColorList = ({ colors, updateColors }) => {
     updateColors([...colorList, colorToEdit]);
 
     axios()
-      .put(`http://localhost:5000/api/colors/${colorToEdit.id}`, colorToEdit)
+      .put(`/api/colors/${colorToEdit.id}`, colorToEdit)
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
@@ -33,7 +33,7 @@ const ColorList = ({ colors, updateColors }) => {
     updateColors(colors.filter(c => c !== color));
     // make a delete request to delete this color
     axios()
-      .delete(`http://localhost:5000/api/colors/${color.id}`)
+      .delete(`/api/colors/${color.id}`)
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };

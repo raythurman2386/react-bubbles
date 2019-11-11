@@ -21,7 +21,7 @@ const AddColor = ({ colors, updateColors }) => {
     console.log(newColor);
     updateColors([...colors, newColor]);
     axios()
-      .post(`http://localhost:5000/api/colors`, newColor)
+      .post(`/api/colors`, newColor)
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
