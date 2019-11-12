@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { axiosWithAuth as axios } from '../utils/axios';
-import AddColor from './AddColor';
+import React, { useState } from "react";
+import { axiosWithAuth as axios } from "../utils/axios";
+import AddColor from "./AddColor";
 
 const initialColor = {
-  color: '',
-  code: { hex: '' }
+  color: "",
+  code: { hex: "" }
 };
 
 const ColorList = ({ colors, updateColors }) => {
@@ -38,25 +38,25 @@ const ColorList = ({ colors, updateColors }) => {
   };
 
   return (
-    <div className='colors-wrap'>
+    <div className="colors-wrap">
       <p>colors</p>
       <ul>
         {colors.map((color, i) => (
           <li key={i} onClick={() => editColor(color)}>
             <span>
               <span
-                className='delete'
+                className="delete"
                 onClick={e => {
                   e.stopPropagation();
                   deleteColor(color);
                 }}
               >
                 x
-              </span>{' '}
+              </span>{" "}
               {color.color}
             </span>
             <div
-              className='color-box'
+              className="color-box"
               style={{ backgroundColor: color.code.hex }}
             />
           </li>
@@ -86,13 +86,13 @@ const ColorList = ({ colors, updateColors }) => {
               value={colorToEdit.code.hex}
             />
           </label>
-          <div className='button-row'>
-            <button type='submit'>save</button>
+          <div className="button-row">
+            <button type="submit">save</button>
             <button onClick={() => setEditing(false)}>cancel</button>
           </div>
         </form>
       )}
-      <div className='spacer'>
+      <div className="spacer">
         <AddColor colors={colors} updateColors={updateColors} />
       </div>
     </div>
